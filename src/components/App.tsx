@@ -447,7 +447,7 @@ class App extends React.Component<ExcalidrawProps, AppState> {
     const searchParams = new URLSearchParams(window.location.search);
     const id = searchParams.get("id");
     const jsonMatch = window.location.hash.match(
-      /^#json=([0-9]+),([a-zA-Z0-9_-]+)$/,
+      /(?:^#|,)json=([0-9]+),([a-zA-Z0-9_-]+)(?:$|,)/,
     );
 
     if (!this.state.isLoading) {

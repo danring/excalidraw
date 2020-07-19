@@ -9,15 +9,23 @@ export const IsMobileProvider = ({
 }) => {
   const query = useRef<MediaQueryList>();
   if (!query.current) {
-    query.current = window.matchMedia
-      ? window.matchMedia(
-          "(max-width: 640px), (max-height: 500px) and (max-width: 1000px)",
-        )
-      : (({
-          matches: false,
-          addListener: () => {},
-          removeListener: () => {},
-        } as any) as MediaQueryList);
+    if (/mobile/.test(window.location.hash)) {
+      query.current = ({
+        matches: true,
+        addListener: () => {},
+        removeListener: () => {},
+      } as any) as MediaQueryList;
+    } else {
+      query.current = window.matchMedia
+        ? window.matchMedia(
+            "(max-width: 640px), (max-height: 500px) and (max-width: 1000px)",
+          )
+        : (({
+            matches: false,
+            addListener: () => {},
+            removeListener: () => {},
+          } as any) as MediaQueryList);
+    }
   }
   const [isMobile, setMobile] = useState(query.current.matches);
 

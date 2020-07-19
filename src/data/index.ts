@@ -102,7 +102,7 @@ export const getCollaborationLinkData = (link: string) => {
     return;
   }
   const hash = new URL(link).hash;
-  return hash.match(/^#room=([a-zA-Z0-9_-]+),([a-zA-Z0-9_-]+)$/);
+  return hash.match(/(?:^#|,)room=([a-zA-Z0-9_-]+),([a-zA-Z0-9_-]+)(?:$|,)/);
 };
 
 export const generateCollaborationLink = async () => {
