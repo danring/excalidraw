@@ -146,6 +146,9 @@ export const MobileMenu = ({
             {actionManager.renderAction("toggleEditMenu")}
             {actionManager.renderAction("undo")}
             {actionManager.renderAction("redo")}
+            {actionManager.renderAction("zoomIn")}
+            {actionManager.renderAction("zoomOut")}
+            {actionManager.renderAction("resetZoom")}
             {actionManager.renderAction(
               appState.multiElement ? "finalize" : "duplicateSelection",
             )}
